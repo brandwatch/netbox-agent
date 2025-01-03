@@ -1,3 +1,4 @@
+import re
 import shlex
 import subprocess
 
@@ -45,7 +46,8 @@ class Hypervisor():
 
     def get_virtual_guests(self):
         output = subprocess.check_output(shlex.split(config.virtual.list_guests_cmd))
-        return output.decode("utf-8").split()
+        output = output.decode("utf-8")
+        return re.findall(config.virtual.list_guests_regex, output, re.M)
 
     def create_or_update_device_virtual_machines(self):
         nb_guests = self.get_netbox_virtual_guests()

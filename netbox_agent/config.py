@@ -46,7 +46,9 @@ def get_config():
     p.add_argument('--virtual.cluster_name', help='Cluster name of VM')
     p.add_argument('--virtual.hypervisor', action='store_true', help='Is a hypervisor or not')
     p.add_argument('--virtual.list_guests_cmd', default=None,
-                   help='Command to output the list of vrtualization guests in the hypervisor separated by whitespace')
+                   help='Command to output the list of virtualization guests in the hypervisor')
+    p.add_argument('--virtual.list_guests_regex', default=r'([^\s]+)',
+                   help='Regular expression to extract the list of virtualization guest names from the output of list_guests_cmd.')
     p.add_argument('--hostname_cmd', default=None,
                    help="Command to output hostname, used as Device's name in netbox")
     p.add_argument('--device.platform', default=None,
