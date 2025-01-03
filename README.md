@@ -136,6 +136,14 @@ network:
 #   hypervisor: true
 #   cluster_name: my_cluster
 #   list_guests_cmd: command that lists VMs names
+#   list_guests_regex: multiline regex to extract VM names from the output of list_guests_cmd with re.findall(regex, output, re.M)
+#
+#   # example for libvirt
+#   list_guests_cmd: virsh list --name
+#   list_guests_regex: '([^\s]+)'
+#   # example for proxmox
+#   list_guests_cmd: qm list
+#   list_guests_regex: '^\s*\d+\s+([^\s]*).*$'
 
 # Enable datacenter location feature in Netbox
 datacenter_location:
